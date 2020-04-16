@@ -62,9 +62,6 @@
 \def\projyear#1{%
    \def\@pjyear{#1}%
 }
-\def\projnumber#1{%
-   \def\@pjnumber{#1}%
-}
 \def\advisor#1{%
    \def\@advisor{#1}%
 }
@@ -520,8 +517,6 @@ National University of Singapore \\ \vspace{1cm}
 \end{centering}
 
 \vspace{5cm}
-
-Project No: \@pjnumber
 
 Advisor: \@advisor
 
