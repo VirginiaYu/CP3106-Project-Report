@@ -413,13 +413,13 @@ Meanwhile, to provide the user/participant with a feedback that the smart glasse
 
 \textbf{\textit{Shooting Angle}}. We set the front and the back cameras, so as to get a 360 degree viewing. However, due to the limit size of the site, we cannot record the whole scene -- the front camera is not able to record the fridge and the cooker at both time. To deal with this problem, we choose the dishes which only needs mostly the left side with the table, or mostly the right side with the table. In this way, we can adjust our angle to capture the main front scene while the back camera can take a contrary/same angle, depending on the recipe chosen. If the recipe chosen only requires the left/right side with the table, we can make the back camera shift to the same side of the front one, so as to observe the gestures more clearer. Otherwise, we can make the back camera shift to the contrary side of the front one, so that the setup satisfies the 360 degree viewing but also we can still view the gestures clearer in one of the views (usually the front view) later.
 
-After video shooting and post-synchronization, the shootings from back, front and direct three angles will be presented like the way shown in Figure 4.6. In the figure, the left up is the front view, the left down is the back view, and the right is Pupil Core view. Here since we do not use the cooker in making that recipe ``Cranberry Biscuits‘’ so that we shift both front and back camera to the participant's left side.
-
 \begin{figure}[H]
 \caption{Three shooting angles in the post-synchronized video}
 \centering
 \includegraphics[scale=0.31]{images/VideoSync.png}
 \end{figure}
+
+After video shooting and post-synchronization, the shootings from back, front and direct three angles will be presented like the way shown in Figure 4.6. In the figure, the left up is the front view, the left down is the back view, and the right is Pupil Core view. Here since we do not use the cooker in making that recipe ``Cranberry Biscuits‘’ so that we shift both front and back camera to the participant's left side.
 
 \textbf{\textit{Additional Notes}}. Before carrying out the video shooting, ensure careful setup to get a nice video, such as light, resolution of the recording equipment, video angle, etc.
 
@@ -545,7 +545,7 @@ Particularly, the videos taken by Pupil Core can be very shaky due to frequent a
 
 As for the interviews and observation notes, I summarized and found some common observations and responses. The interim results is documented in Section 5.1.
 
-\section{Interview Results}
+\section{Findings of User Study}
 \subsection{Think-aloud Protocol}
 According to the feedback from the participants up to now, we can say that not everyone can follow the ``think-aloud" protocol. Many participants who are new to using smart glasses and performing live authoring are very likely to feel difficult. 
 
@@ -584,14 +584,20 @@ We used Vuzix Blade smart glasses in the user studies. Almost all participants c
 
 Also one participant mentioned she feels that she became more cautious wearing the glasses and the view through the glass became more concentrated. But later when she get used to the glasses, her behaviors get much more easier, which is more closed to her natural behaviors in cooking scenario.
 
-\section{Video Analysis}
-\subsection{Process of Systematic Video Analysis}
-\subsection{User Behaviors in Wearing vs. Not wearing smart glasses}
-\subsection{User Behaviors in Instructing and Teaching}
+\subsection{User Behaviors during Live-authoring when Wearing the smart glasses}
+First of all, the biggest difference of wearing smart glasses and not wearing smart glasses is the alteration of the attention focus and concentration of the participants. Participants told the instructor that smart glasses with narrower and darker sight makes them more concentrated when doing cooking actions. Besides, according to the taken videos, most participants have many shared behavior patterns wearing the smart glasses while they do not have those patterns without smart glasses. 
+
+When they are not intended to show the action as the action is not that important, they tend to keep it in a natural way just like without smart glasses. However, when they need to introduce a ingredient, or to check whether the state of the dish/processing ingredient is good, they will move their heads closer to the object they are focusing on or use hands to move the object closer to the sight (while keeping the head unmoved). I would consider this as releasing the signal of willing to capture.
+
+Besides, the participants wearing smart glasses will slow down a little bit in live-authoring. It is probably because they are not get used to smart glasses and live-authoring in this new platform of device yet, and they may think the slow pace of giving instructions makes it easy to distinguish from step to step -- as without smart glasses the view is usually front view which is easier to recognize.
+
+Furthermore, the participants will pause and move their heads up when they are thinking what to do next or how to deal with some unexpected situations. This pattern could also be useful as the output file from the user's point view does not need include these (thinking) parts. In other words, we probably can map this behavior to trimming the (unwanted) parts.
 
 \chapter{Reflection and Future Work}
 \section{Reflection and Limitation}
-\quad\, \textit{\textbf{Sample Size}}. Up to now, there are altogether 6 participants and 16 shooting (including the dry and real-making ones). However, it is far from enough to draw a sound conclusion as the sample case is too small. Thus, the interim results mentioned in last chapter might not really be the ``common" traits when the number of participant sample goes large, although we can get a feeling and be inspired by interim results so as to optimize the process of the user studies. I plan to carry out this user studies among at least 12 participants, and do video analysis in a more systematic way (in which the approaches considered in the development of EagleView \cite{brudy2018eagleview} a video analysis tool for visualising and querying spatial interactions of people and devices can be referenced).
+\quad\, \textit{\textbf{Sample Size}}. Up to now, there are altogether 6 participants and 16 shooting (including the dry and real-making ones). However, it is far from enough to draw a sound conclusion as the sample case is too small. Thus, the interim results mentioned in last chapter might not really be the ``common" traits when the number of participant sample goes large, although we can get a feeling and be inspired by interim results so as to optimize the process of the user studies. I plan to carry out this user studies among at least 12 participants.
+
+\textit{\textbf{Video Analysis}}. Instead of watching post-synchronized videos which can omit useful information, I plan to do video analysis in a more systematic way (part of the analyzing approaches considered in the development of EagleView \cite{brudy2018eagleview} a video analysis tool for visualising and querying spatial interactions of people and devices can be referenced).
 
 \textit{\textbf{Participant Conditions}}. Among the 6 participants who took part in the user study, some of their conditions may affect the result of the user studies. The first participant (me) is familiar with the concept of live-authoring and had experience of using smart glasses as well as live authoring on mobile phone. Also, the first participant has already had a expectation towards capturing patterns and actions, which may affect the natural behaviors in the user studies. The third participant, who are not proficient in English (can read but not very well in speaking), used Chinese in the user study so as to perform naturally. However, we actually do not know if the change of the language will bring any affect on the result. The fourth participant who is not skilled at cooking, easily brought the status of feeling difficult into the experiment, sometimes violating the requirement of the instructors that instructing by voice and vision to the remote audience. Thus, in the rest of the experiments to be carried out, I will try to find participants who is proficient in English, in cooking and new to live authoring process.
 
@@ -601,7 +607,7 @@ Also one participant mentioned she feels that she became more cautious wearing t
 
 \textit{\textbf{Seamlessness}}. According to recent 6 participants, training time varies from person to person. The fifth participant said it was hard to adapt to the view of smart glasses and not facing to the front when instructing. Thus, in later experiments, we may increase or decrease training session (like altering the rehearsal times) to ensure the participant is well-prepared and in good state to be engaged in the tasks.
 
-\section{User Studies}
+\section{Future User Studies}
 In the future user studies, we may include the gaze movements and possibly other implicit inputs as well, if equipment and experiment site support. Also we will carry out the experiment without implicit HCI in the same setting so as to compare with the live authoring with implicit HCI.
 
 \section{Implementation}
