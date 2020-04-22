@@ -475,7 +475,7 @@
   (UROP) Project Report \\
 \else
   \if@fyp
-     B.Comp. Dissertation \\
+     CP3106 Project Report \\
    \else
      \errmessage{Unknown project type. Please use option fyp or urop in documentclass}
   \fi
@@ -500,7 +500,7 @@ National University of Singapore \\ \vspace{1cm}
   (UROP) Project Report \\
 \else
   \if@fyp
-    B.Comp. Dissertation \\
+    CP3106 Project Report \\
    \else
     
   \fi
