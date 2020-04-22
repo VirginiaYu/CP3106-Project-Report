@@ -62,9 +62,6 @@
 \def\projyear#1{%
    \def\@pjyear{#1}%
 }
-\def\projnumber#1{%
-   \def\@pjnumber{#1}%
-}
 \def\advisor#1{%
    \def\@advisor{#1}%
 }
@@ -478,7 +475,7 @@
   (UROP) Project Report \\
 \else
   \if@fyp
-     B.Comp. Dissertation \\
+     CP3106 Project Report \\
    \else
      \errmessage{Unknown project type. Please use option fyp or urop in documentclass}
   \fi
@@ -503,7 +500,7 @@ National University of Singapore \\ \vspace{1cm}
   (UROP) Project Report \\
 \else
   \if@fyp
-    B.Comp. Dissertation \\
+    CP3106 Project Report \\
    \else
     
   \fi
@@ -520,8 +517,6 @@ National University of Singapore \\ \vspace{1cm}
 \end{centering}
 
 \vspace{5cm}
-
-Project No: \@pjnumber
 
 Advisor: \@advisor
 
