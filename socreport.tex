@@ -1,96 +1,616 @@
 \documentclass[fyp]{socreport}
 \usepackage{fullpage}
+\usepackage{float}
+\usepackage{graphicx} 
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{caption}
+\graphicspath{ {./images/} }
 \begin{document}
 \pagenumbering{roman}
-\title{Design and Implementation of an Algorithm for a Problem}
-\author{Tan Ah Kow}
-\projyear{2004/05}
-\projnumber{H123456}
-\advisor{Dr. Lee Ah Hua}
+\title{Implicit Human-Computer Interaction for Live Snippets on Smart Glasses in the Cooking Scenario}
+\author{Yu Jiahan}
+\projyear{AY2019/2020, Semester II}
+\advisor{Assoc Prof Zhao Shengdong}
 \deliverables{
-	\item Report: 1 Volume
-	\item Source Code: 1 DVD}
+	\item Report: 1 Volume}
 \maketitle
 \begin{abstract}
-In this report, we study a problem and design an efficient algorithm
-to solve the problem.  We implemented the algorithm and evaluated
-its performance againts previous proposed algorithms that solves the
-same problem.  Our results show that our algorithm runs faster.
+Through the user studies of live snippets in cooking scenario based on smart glasses focusing on implicit human-computer interactions, we find the common user preference in capturing patterns for different outputs of snippets in live-authoring, and figure out related parameters, and conditions which can be utilized to mapping the patterns implicitly and to the production of computer-facilitated multimedia output file.
 
-\begin{descriptors}
-    \item C5 Computer System Implementation
-	\item G2.2 Graph Algorithms
-\end{descriptors}
 \begin{keywords}
-	Problem, algorithm, implementation
+	Implicit Human-Computer Interaction (HCI), live authoring, live snippets, smart glasses
 \end{keywords}
-\begin{implement}
-	Solaris 10, g++ 3.3, Tcl/Tk 8.4.7
-\end{implement}
 \end{abstract}
 
 \begin{acknowledgement}
-   I would like to thank my friends, families and advisors.
-   Without them, I would not have be able to complete this project.
-\end{acknowledgement}
+\quad\, I cannot begin to express my gratitude to National University of Singapore (NUS) for admitting me to the NGNE program, and offer me the great opportunity to do the research project here, which allows me to have access to up-to-date advances in computer science and to have the opportunity to push the boundary of innovation and work closely with foremost researchers.
+   
+The project would not have been possible without the support and nurturing of Prof Zhao Shengdong. I would like to express my deepest appreciation to Prof Zhao who agreed to be my supervisor of the project. With limited prior knowledge of in the field, Prof Zhao has been providing me with the guidance, encouragement and patience throughout the duration of this project. Thank you for inspired me a lot and I have been enjoying the research experience.
+   
+I had great pleasure of working with all the members in the NUS HCI lab. Special thanks to my collaborators of this project, Hyeongcheol Kim and Nuwan Janaka, both of whom offers the great support and help. 
 
+Besides, I would like to recognize the help from all the participants in the user studies. Thank you for contributing your time.
+
+\end{acknowledgement}
 \listoffigures 
 \listoftables
 \tableofcontents 
 
 \chapter{Introduction}
-Many problems exist in computer science.  In this project, we 
-studied one particular important problem and propose a solution 
-for it.  
+Through the user studies of live snippets in cooking scenario based on smart glasses, we figure out the user preference in capturing patterns for different outputs of snippets in live authoring, related parameters, and conditions that can be utilized to support the patterns implicitly in terms of a system.
 
-\section{Background}
-In this section, we briefly discuss the history and background
-of the problem.  A detail literature survey is presented in 
-Chapter \ref{ch:related}.
+\section{Motivation}
+Smart glasses provide an advantage of having the same view of humans so that the perception of the device is synchronized with human perception. Thus, if the capturing mechanism of live-authoring can be implemented with smart glasses, it could be useful for naturally and seamlessly capturing the moments. Furthermore, it can be performed without explicit interactions to produce computer-facilitated documentations for the more natural process of live authoring.
 
-The problem we study in this report is an important one.
-This problem is first proposed in 1990 in the context
-of graph theory \cite{smith90graph}.  Zhang gives the
-first algorithm to the problem and applied it to solve several 
-problems in artificial intelligence \cite{zhang91ai,zhang92ai}.  
-More recently, a slightly different formulation of the problem
-is studied independently \cite{kovsky92diff,ali94diff}.  None of this previous work
-uses the technique that we propose in this project.  Thus, we 
-believe that our algorithm is novel.
+In the project, we select the specific scenario, cooking, as a startup, since the cooking scenario requires to manufacture a cooking process into a recipe with separate steps, which can be extended to many other fields like medical treatment, education, etc. 
 
-\section{The Problem}
-In this section, we formally defined the problem.  We adopt
-the definition given by Kovsky \cite{kovsky92diff}.
+\section{The System on Smart Glasses}
+To go into detail, imagine a scenario that a chef who without much spare time would like to obtain a draft recipe soon after he shows the cooking process of how to make some dish. However, the chef does not like to be distracted much in the midst of cooking and instructing. Therefore, we would like to implement an application on smart glasses to capture and manipulate the live-authoring workflow in cooking and allows for greater spontaneity by supporting implicit interactions to produce computer-facilitated multimedia files.
 
-\section{Our Solution}
-\section{Report Organization}
+Consider the application as a system. The system consists of the inputs, the outputs, and the contextual parameters which map the inputs to the outputs. In this scenario, the explicit inputs refers to the video input (i.e., the recording captured by camera) and the audio input (i.e., the recording captured by microphone). The outputs are a series of live snippets, showing the process of making some dish. The outputs can be presented in many capturing patterns, which will be discussed in Section 4.1.2.
 
-\chapter{Related Work}
-\label{ch:related}
+The contextual parameters are triggered by the user’s implicit interactions, and are used to seamlessly map the explicit inputs to different capturing patterns. To figure out what the implicit interactions can be, we carried out the user study which we mainly focus on the natural user behaviors such as eye gazing, head movements, hand movements and gestures, and body movements and gestures (e.g. direction of the shoulder). The user studies will be further discussed in Chapter 4 and Chapter 5.
 
-\chapter{Problem and Algorithm}
-\section{Formal Description of Problem}
-\section{Design of Algorithm}
-\section{Proof of Correctness}
-\section{Complexity Analysis}
+\section{Objectives}
+\quad\textbf{\, General Objective of the Application}
 
-\chapter{Evaluation}
-\section{Implementation Details}
-\section{Experimental Setup}
-\section{Results}
+The application on smart glasses is aimed to produce a computer-facilitated draft recipe that well transforms the audio and video inputs captured by smart glasses into proper patterns and formats in an organized manner. For instance, it is able to cut off the repeated or unwanted part of the cooking process, capture the key frames, and present the cooking procedures with related text instructions.
 
-\chapter{Conclusion}
-\section{Contributions}
-\section{Future Work}
+\textbf{Objectives of the User Studies}
+
+To support the process of live authoring with smart glasses in an implicit manner, it is necessary to figure out what capturing patterns a capture might be able to have, and what contextual parameters and conditions can support the patterns implicitly.
+
+Hence, in terms of the objective of the user studies, the first is to find out what capturing patterns a capture might have and the user preference in terms of these patterns. The second is to infer candidates for implicit interactions and see if the candidates can be proved by further investigations such as observing and analyzing our collected data (video shootings, interviews). 
+
+Having extracted some common intended gesture inputs, the next is to know how they affect the patterns of the output. In other words, how they can be used to map what the user thinks to the operation of manipulating the video and audio inputs, or to scaffolding -- which means offering some guidance in helping the user to generate structured outputs from live-authoring. After that, the feature of implicit interactions would be added to the system and would be verified if the design of implicit interactions is sound and robust where false positives can be dealt with. However, the objectives of understanding the mechanism of the mapping and properly interpreting human intention are future issues for this project, which are not included in the design of the user studies at the current stage.
+
+
+
+\chapter{Background}
+\section{Live-authoring and Live-snippets}
+The concept of live-authoring in the project refers to the user creating live snippets in the midst of viewing and speaking up. To specify in the cooking scenario, the user cooks while giving instructions to the “remote” audience who will see the final version of the recipe. Smart glasses record the video of the cooking process and record the audio of the user’s instructions, and accordingly produces a series of snippets as steps or the key frames in the recipe. Compared to the post-editing mode which adds instructions after shooting the video, live-authoring offers quick reporting and feedback (i.e., the produced multimedia file), and there is no need for the user to recall cooking details, leading to least deviation of the instructions.
+
+There are also other interpretations of live-authoring, such as LACES, a system introduced in 2014 that supports the concept of live-authoring by enabling simple video manipulations in the midst of filming \cite{freeman2014laces}. 
+
+Many ways are found to augment people’s in-situ activity for live-authoring, for instance, integrating physical activity into the concept of live authoring, or mixing the scaffolding in the context of Augmented Reality (AR) or Virtual Reality (VR) \cite{chen2016augmented,sweeney2018using}. Apart from those, smart glasses also serving as a new platform of device in live-authoring, with its advantage of having the same view of humans, is able to enhance the seamlessness of in-situ activity. 
+
+\section{Porting from Mobile Phone to Smart Glasses}
+Hyeongcheol Kim, the PhD Candidate in NUS HCI lab, has developed the application “LiveSnippet” on mobile phones before this project starts. Then considering less distraction and more seamlessness that smart glasses might bring, we would like to see what change it makes when application “LiveSnippet” on mobile phones ports to a new platform of device -- the smart glasses. Hyeongcheol has ported the basic live-authoring workflow from the mobile phone to smart glasses. Below shows the basic workflow of the LiveSnippet Application both on mobile phones and smart glasses, and also shows how the feedback is given on smart glasses.
+
+\textbf{Basic Workflow}
+\begin{enumerate}
+    \item User takes a photo, and save it in the gallery;
+    \item When the photo is saved, the audio recording starts immediately. The user speaks up. The recorded audio will be converted into text which will be shown as the description of the taken photo. The photo and corresponding speech-to-text consists of one live snippet in the output file.
+    \item Repeat step 1-2 until the user finishes live authoring.
+    \item A multimedia file with sequential live-snippets (photos with corresponding speech-to-text) will be generated and presented in the smart glasses' view. The user is able to scroll up and down on the temple of the smart glasses to review the computer-produced draft documentation.
+\end{enumerate}
+
+\textbf{Feedback on Smart Glasses}
+\begin{enumerate}
+    \item When a photo is taken, the captured image is shown at the corner of the smart glasses view during the successive audio recording.
+    \item A microphone icon appears when recording the voice so that  the user can know that its voice is being recorded.
+\end{enumerate} 
+
+\section{Pilot Testing on LiveSnippet on Smart Glasses and Discovery}
+Based on the ported version of LiveSnippet on smart glasses, Hyeongcheol Kim, the PhD Candidate in NUS HCI lab, carried out pilot testing on lab members who are new to live-authoring on the platform of smart glasses. In the pilot testing, we used two smart glasses. They are of two brands, Vuzix Blade and Epson respectively (Figure 2.1). The participants were asked to experience the live-authoring with smart glasses wearing in the lab environment. They were asked to use the ported application ``LiveSnippet" on the smart glasses, and to follow the basic workflow which has mentioned in Section 2.2.
+
+\begin{figure}[H]
+\caption{Vuzix Blade Smart Glasses (left); Epson Smart Glasses (right)}
+\centering
+\includegraphics[scale=0.2]{images/Vuzix.jpg}
+\quad\includegraphics[scale=0.4]{images/Epson.jpg}
+\end{figure}
+
+During the pilot testing, we observed that the participants had very different experiences during live-authoring on the platform of smart glasses, as compared to live-authoring on the platform of mobile phones. We infer that it might be because smart glasses is close and always present to the user, leading to a greater power and influence on the user \cite{zheng2015eye} and thus different product use and user experience. For instance, participants can be easily distracted by the visual feedback on the smart glasses. Especially their centered focus tends to shift to the captured image at the corner when a photo is taken. Another interesting observation is that some of the participants would unconsciously speak out what they are going to do such as ``Okay, (I am going to) take a photo" before touching on the temple of smart glasses to perform a command. They said as they were new to the process of creating live snippets at the moment, this way slows down the authoring process and allows them to think and confirm the mode they are in -- the mode of capturing the image, or the mode of recording the voice. Yet on the other hand, this way may affect the seamlessness of the authoring process as the thinking mode changes back and forth between creating the live snippets and performing the command. 
+
+Therefore, it is necessary to rethink the workflow of creating live snippets on smart glasses, specially on how to deliver the commands and provide the visual or haptic feedback to the user, so as to offer the user seamless authoring experience as well as accurate and convenient interactions.
+
+Furthermore, in the pilot testing, we discovered that the experience of live authoring on smart glasses also relies heavily on the hardware design of the smart glasses. Firstly, smart glasses with low resolutions can bring about poor user experience, where in the test Epson with 1280x720 resolution performs much better than Vuzix Blade with only 480x853 resolution. 
+
+Secondly, wearing smart glasses makes human sight narrower and more focused on the direct view while the side view is harder to obtain compared to the condition of not wearing smart glasses. Though the view of smart glasses depends on the hardware design, the smart glasses we tested, especially Vuzix Blade, have a view that is a little bit distant from what we truly see. For instance, when wearing smart glasses, we may not see our hands when putting the hands close to our body, whereas we can see if we put them a bit further, owing to the limited range of the view angle. However, as the eyeglasses are fixed and the angle of the camera of smart glasses cannot be adjusted, the user wearing smart glasses can only capture the direct view, which may heavily affect the live-authoring process. Instead of the movement of the eyeballs, users wearing smart glasses have to move their heads to adjust the angle so as to see the object when directly over that object. Certainly it would be perfect to have the smart glasses with its camera angle that can be adjusted. To eliminate the impact of the factor above, we used smart glasses plus the Pupil Core whose camera can be easily adjusted in the user studies. The detailed will be mentioned in Section 4.2.3.
+
+\section{Early Implementation and Changing Research Focus}
+Before the pilot testing, I had been developing the feature of voice command. However, the implementation is suspended based on the preliminary test result on basic live-authoring on smart glasses, as mentioned in the previous section. I started to rethink the necessity of voice command and the workflow of creating live snippets on smart glasses, especially in how to deliver the commands (explicitly of implicitly) and how to map the recorded video and audio into multimedia document.
+
+\subsection{Voice Command Interfering}
+The interaction with smart glasses in the pilot test is touching, swiping on the temple of the smart glasses. However, as the participant is not very familiar with which action (e.g. double touching, swipe forward/backward, etc.) maps to which command (e.g. taking a photo, retake a photo, etc.), the interaction may require long dwelling time. Therefore, I decided to implement voice command feature. It does not require the user to explore the right place to touch on the temple, and figure out the mappings. The user can simply speaks out their needs, like ``take a photo". However, the challenging thing is that the the recording of voice commands and audio descriptions are in the same channel, which means it is very difficult to convert the whole audio input (commands and descriptions) into instructions and descriptions separately without much delay as the audio is sent to cloud to be converted into text. We can use buffers to achieve relative simultaneity, yet it is very difficult to separate commands and descriptions. 
+
+Hence, I treated the audio input as a whole and would like to process that whole audio at the post-editing stage -- if we detect the user said ``take a photo" at the moment X, then we put the screenshot of the video at moment X into our multimedia file. This approach also has drawbacks as it violated the original intention of our project which is live-authoring rather than post-editing. It can take quite long time if the shoot is long and there are many commands in the process. Besides, the post-editing approach cannot provide instant feedback to the user. For instance, the user wants to capture a static image rather than a short video. When the user delivered the command, he or she actually does not know if the smart glasses have heard and processed the command. As many papers proved, users tend to use accurate inputs and they would like to know whether their inputs are received or not. To provide the support of converting speech to text lively and giving the user feedback, one solution might be establishing a local library of speech-to-text so that smart glasses does not require Internet accessibility and high speed during whole live-authoring -- also Internet-connected at all time is impractical since connecting all the time is energy-consuming and kitchens usually are not assumed to have good Internet connection. In terms of the feedback form, there are few options: (1) Follow the ported version which shows the taken photo at the corner of the user's sight yet can caught the user's attention unnecessarily; (2) Show text on screen yet in which way the user is not able to know whether the photo is taken good or not, but then it is hard to carry out the operation of retaking the photo; (3) Instead of showing captured entity, smart glasses can show a frame such as a red rectangular in the user's sight indicating the image in this frame is taken or is being shot, and make other things transparent in the meantime; (4) Haptic interaction like vibrotactile feedback can also be possible way to inform the users of ``the command has been delivered successfully. However, this approach that converting speech to text lively and giving the user feedback was not implemented because there are many related implementation limitations in Android Studio. 
+
+\subsection{Altering Research Focus}
+As we know, the audio command can be explicit commands, but also can be commands with implicit conversational cues \cite{vtyurina2018exploring}. However, in this project, as the audio command is input with those descriptions which are in natural language, the two of them can be mixed with each other. If we use explicit commands, then the system requires users to speak out the command explicitly so that it can match with preset command sentences. Yet in this way the seamlessness of live-authoring can be affected, and the user's thinking process can be easily interrupted. 
+
+Utilizing implicit gestures or both of implicit gestures and voice commands, seem more intuitive than using solely explicit voice command. If using implicit gestures, the user is able to operate the command delivery and live-snippet creation at almost the same time, without being interrupted much. And that is why we altered out research focus to figuring out the gestures or movements which could infer user’s consciousness on capturing process and the afterward implementation. Chapter 3 will introduce some related works and inspired ideas about implicit HCI on smart glasses. Chapter 4 will introduce the design of user studies for directing us to next step of implementation.
+
+% Chapter \ref{ch:related}
+% \label{ch:related}
+\chapter{Related Works}
+
+\section{Delimiters}
+Delimiters represent one of various means to specify boundaries in a data stream. In this project, to map the explicit inputs (video input and audio input) into different output patterns and separate live snippets. One solution is to find some unique motion gestures that act as delimiters for different output patterns, and hence, separates the process of cooking and instructing from a user's intended input and then generate live-snippets. In addition, such gesture delimiters give users the control to activate motion gestures without any hardware modifications to existing devices. The delimiters are supposed to reflect the user's intention, and are supposed to perform quickly and within a limited amount of physical space. Besides, in motion-gesture-based interactions, a major technical barrier is the need for high recognition rates with low false positive conditions. This obstacle limits the potential of good interaction design since many proposed physical motions are indistinguishable from everyday motions.
+
+There have been many researches on the gesture delimiters. DoubleFlip is a unique motion gesture that acts as a delimiter for other motion gestures, and hence, separates normal mobile phone motion from a user’s intended input \cite{ruiz2011doubleflip}. WristRotate is a personalized motion gesture delimiter for wrist-worn devices that enables separation of non-relevant motion from gesture input \cite{kerber2015wristrotate}. Also a gesture delimiter was introduced to be used always at the beginning and the end of a gesture so as to tell when a certain gesture begins and ends during the experiments \cite{liu2004hand}.
+
+\section{Interaction Methods for Smart Glasses}
+\begin{figure}[H]
+\caption{Classification of interaction approaches for smart glasses}
+\centering
+\includegraphics[width=\linewidth]{images/Classification.png}
+\end{figure}
+
+There are multiple dimensions for classifying interaction approaches, for instance, Vision-based and Non-vision based, Gesture-based and Non-gesture based \cite{bertarini2014smart}. An alternative dimension is to divide the interaction approaches into 3 classes, which are handheld, touch, and touchless \cite{tung2015user}. Figure 3.1 \cite{lee2018interaction} depicts the classification of interaction approaches proposed in this way.
+
+Thereinto, we focus on the literature review of those main touchless interaction approaches for smart glasses in this section. Regarding the touchless inputs, smart glasses users make gestural input mid-air and receive visual clues from the optical display on the smart glasses. The touchless input can be classified into two categories: Hands-free and Freehand interactions, as shown in Figure 3.1. Hands-free interaction can be made by the movements of the voice, head and gaze movements, while freehand interaction focuses on mid-air hand movements for gestural input.
+
+\subsection{Voice Interaction}
+
+Voice interaction is the major input method for Google Glass and Microsoft Hololens. However, it is not a robust input since voice interaction usually has poor social acceptance in shared or noisy environments, for instance, causing disturbance and obtrusion, disadvantages to mute individuals, accidentally activated by environmental noise \cite{yi2016glassgesture}, or even disclose sensitive information to both the surrounding listeners and remote speech processing servers \cite{shatilov2019emerging}. Fortunately, in the scenario of cooking, we do not need to worry about the public context as it is usually done in a much more private context. 
+
+Whereas, last year a group of researchers \cite{yan2019privatetalk} have put forward an on-body interaction technique (Figure 3.2) as the solution to social acceptance, which allows users to activate voice input by performing the Hand-On-Mouth gesture during speaking. The Hand-On-Mouth gesture refers to the user’s hand covering the mouth from one side, and PrivateTalk compares the audio inputs received by the two earphones for detecting this gesture. This technique not only enhances privacy but also removes the need for speaking wake-up words and is more accessible than a physical or software button especially when the device is not in the user's hands. The design of the Hand-On-Mouth gesture has the precondition that at least one hand is free. So if considering a public context similar to the cooking which is also very likely to have hands occupied, the solution ceases to be effective.
+
+\begin{figure}[H]
+\caption{Illustration of the Hand-On-Mouth gesture}
+\centering
+\includegraphics[scale=0.4]{images/Hand-On-Mouth gesture.png}
+\end{figure}
+
+Besides as Kollee's research \cite{kollee2014exploring} shows, when exploring gestural and non-gestural interactions on head mounted devices with egocentric sensing, voice control as (sole) input (with touchpad) modality performed worst (obviously) compared to the other input techniques due to execution speed and error count. 
+
+\subsection{Head Movements}
+
+Head-tilt gestures are applicable to text input \cite{jones2010gestext}, user authentication \cite{yi2016glassgesture}, and game controller \cite{wahl2015using}. It can achieve high input accuracy \cite{yi2016glassgesture}. However, head movements cannot be considered as the major input source due to the ergonomic restriction of users moving their heads, especially for long-periods.
+
+\subsection{Gaze Movements}
+Gaze inputs tend to be used when operating a specific object. It can be applied to instruct the cursor movement for pointing tasks \cite{wahl2015using}, for instance, choosing an object with an eye gaze \cite{slambekova2012gaze}, text input \cite{tuisku2008now}, and recognizing objects with eye gaze in augmented reality (AR) \cite{toyama2012gaze}. Gaze interactions have a great advantage of catching the target object quickly. 
+
+Therefore, there are some applications that use gaze movements to embed visible messages into or read the messages from the real-world object. In UbiGaze \cite{bace2016ubigaze}, users can embed visible messages into any real-world object and retrieve such messages from those objects with the assistance of gaze direction which indicates where the users are looking in the surrounding physical environment. The sensing and interaction application ARtSENSE \cite{schuchert2012sensing}, is able to detect museum visitors attention in artworks as well as in presented AR content; present appropriate personalized information based on the detected attention as augmented overlays; and allow museum visitors gaze-based interaction with the system or the AR content. Figure 3.3 depicts the work idea of ARtSENSE.
+
+\begin{figure}[H]
+\caption{ARtSENSE which provides the user more information based on estimated interests (left) and used bidirectional see through HMD prototype (right).}
+\centering
+\includegraphics[scale=0.5]{images/ARtSENSE.png}
+\end{figure}
+
+It is important to give users feedback as users would like to confirm the interaction events, no matter which kind of interactive gestures the user inputs. So in a system on a mobile device which uses gaze movements as input, the researcher \cite{kangas2014gaze} provides gaze input with vibrotactile feedback to confirm that the object has been successfully chosen. The result is that vibrotactile feedback significantly improved the use of gaze gestures. Tasks were completed faster, rated easier, and more comfortable due to reduced uncertainty when vibrotactile feedback was provided. However, since the research is carried out on mobile devices, we do not know if it can be extended to the platform of smart glasses.
+
+\subsection{Hand Gestures}
+Hand gestures can be classified into 8 types \cite{aigner2012understanding}: Pointing, Semaphoric-Static, Semaphoric-Dynamic, Semaphoric-Stroke, Pantomimic, Iconic-Static, Iconic-Dynamic, and Manipulation, as shown in Figure 3.4. The followings is a brief explanation of the listed hand gesture types.
+
+\begin{figure}[H]
+\centering
+\caption{The classification of hand gesture types}
+\cite{aigner2012understanding}
+
+\includegraphics[scale=0.7]{images/gesture.png}
+\centering
+\end{figure}
+
+\small
+\begin{itemize}
+    \item Pointing: Select an object or to specify a direction. Pointing can be represented by index finger, multiple fingers, or a flat palm.
+    \item Semaphoric-Static: Derived meaning from social symbols, e.g. thumbs-up as ’Like’ and forward-facing flat palm as ’Stop’. The symbols can be carried out with one or both hands and be directed to the camera w/o movement.
+    \item Semaphoric-Dynamic: Add temporal aspect on the Semaphoric-static. Clockwise rotation motion means ’Time is running out’.
+    \item Semaphoric-Stroke: Similar to Semaphoric-dynamic, but an additional constraint of a single dedicated stroke is considered. E.g. ‘Next/Previous Page’.
+    \item Pantomimic: Considered a single action of mime actor to illustrate a task, for example, grabbing an object, as well as moving and dropping an object.
+    \item Iconic-Static: Pertaining to an icon, e.g. making an oval by cupping two hands together.
+    \item Iconic-Dynamic: Added temporal aspect on Iconic-Static. e.g. constantly circular hand movement (i.e. drawing a circle).
+    \item Manipulation: the above gesture types requires a pre-defined time interval to recognize the hand gesture. This type refers to executing a task once the user performs a particular gesture. Considering moving an virtual 3D object, no delay should exist once the mid-air touch on the virtual object is executed and the update of an object’s location should be instantly performed in a continuous manner.
+\end{itemize}
+\normalsize
+
+Also Groenewald et al. \cite{groenewald2016understanding} provided a more detailed classification for mid-Air hand gestures -- categories, open codes, and concepts. 
+
+While hand gestural interaction has compelling features such as natural and intuitive interaction, it has many drawbacks. Since Social acceptance is a concern in public space, performing in-air gestures in front of the face is weird and not socially acceptable. Also, if the input surface does not have an influence on the gestures’ meaning, users prefer to perform the gestures on a surface reached with least movement \cite{tung2015user}. Gestural interaction requires relatively long dwelling time compared with mouse or touch interaction \cite{istance2008snap}. The user needs to hold the posture for a period of time and this problem is regarded as the inability to separate unintentional movements from intentional command gestures, in which guessing the gesture initiation and termination are consuming and erroneous. 
+
+Some investigations on user preference for hand gestures have also been conducted. A user-elicitation study \cite{bostan2017hands} collecting 957 gestures from 19 participants for 26 commands was conducted to find users' preferences about hand-specific on-skin gestures. Results indicate that (1) users use one hand as a reference object, (2) load different meanings to different parts of the hand, (3) give importance to hand-properties rather than the skin properties and (4) hands can turn into self-interfaces. Moreover, according to users' subjective evaluations, (5) exclusive gestures (Figure 3.5) are less tiring than the intuitive ones (Figure 3.6). 
+
+\begin{figure}[H]
+\centering
+\caption{Exclusive hand gestures}
+\cite{bostan2017hands}
+
+\includegraphics[scale=0.51]{images/exclusive.png}
+\centering
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\caption{Intuitive hand gestures}
+\cite{bostan2017hands}
+
+\includegraphics[scale=0.51]{images/intuitive.png}
+\centering
+\end{figure}
+
+However, most of gesture-based input systems are sensitive to interference and hard to deploy in mobile scenarios \cite{shatilov2019emerging}. Surface Electromyography (sEMG), a non-invasive method to quantitatively measure electrical activity in human muscles by estimating the electrical potential differences between muscle and ground electrodes, offers a robust and convenient method to recognize gestures as well. EMG measurements and analysis is used for medical, rehabilitation and sports purposes, alongside with HCI and prosthesis control by utilizing non-obstructive, lightweight sensors with the capability of wireless signal transmission.
+
+\section{Manufacturing, Teaching and Guiding Techniques}
+\subsection{Augmented Reality (AR) Assembly Guidance}
+
+\begin{figure}[H]
+\centering
+\caption{Topics related to AR assembly guidance}
+\cite{wang2016comprehensive}
+\includegraphics[scale=0.7]{images/topics.png}
+\centering
+\end{figure}
+
+The relations between the research topics pertinent to AR assembly guidance are shown in Figure 3.7. It can be categorized into AR multimedia and interactive instructions, context-awareness and authoring, and evaluation of AR assembly guidance. The details of researches in the first two categories are as follows.
+
+\textbf{AR Multi-media and Interactive Instructions}
+
+The topic of AR based multimedia assembly guidance has been investigated as a classic problem for a long time \cite{wang2016comprehensive}. AR can provide intuitive interaction experience to the users by seamlessly combining the real world with the various computer-generated contents. Sukan et al. \cite{sukan2014parafrustum} presented an interactive system called ParaFrustum to support users to view a target object from appropriate viewpoints in context, such that the viewpoints could avoid occlusions.  Henderson and Feiner \cite{henderson2011augmented} presented the first AR system to aid users in the psychomotor phase of procedural tasks \cite{neumann1998cognitive}. The system provides dynamic and prescriptive instructions in response to the user’s ongoing activities. In order to enhance man-machine communication with more efficient and intuitive information presentation, Andersen et al. \cite{andersen2009interactive} proposed a proof-of-concept system based on stable pose estimation by matching captured image edges with synthesized edges from CAD models for a pump assembling process. To create AR work instructions for bench top assemblies, a novel expert demonstration authoring approaches AREDA \cite{bhattacharya2019augmented} is used, where the working concept is that an expert is recorded performing the assembly steps by a computer vision system. The recording is then automatically processed to generate AR work instructions. 
+
+\textbf{Context-awareness and Authoring}
+
+A context-aware AR assembly system keeps track of the status of users in real-time, automatically recognizing manual errors and completion at each assembly step and displaying multimedia instructions corresponding to the recognized states \cite{khuong2014effectiveness}. The ARVIKA project \cite{friedrich2002arvika} provides a context-sensitive system to enhance the real field of vision of a skilled worker with timely pertinent information. Rentzos et al. \cite{rentzos2013augmented} proposed a context-aware AR assembly system, which integrated the existing information and knowledge available in CAD/ PDM systems based on the product and process semantics, for real-time support of the human operator. Zhu et al. \cite{zhu2014ar} proposed a wearable AR mentoring system to support assembly and maintenance tasks in industry by integrating a virtual personal assistant (VPA) to provide natural spoken language based interaction, recognition of users’ status, and position-aware feedback to the user. There are also studies on the recognition and tracking of the pose of the objects in an assembly. For instance, Radkowski and Oliver \cite{radkowski2013natural} proposed a recognition method to distinguish multiple circuit boards and to identify the related feature map in real time. 
+
+Researchers have investigated the impact of context-aware based AR on the performance of human operators as well as reducing their fatigue during assembly tasks by providing real-time user ergonomic feedback. Chen et al. \cite{chen2015automated} proposed an adaptive guiding scene display method in order to display the synthesized guiding scene on suitable region from an optimal viewpoint. Damen et al. \cite{damen2012egocentric} proposed a real-time AR guidance system to facilitate the sensing of activities and actions within the immediate spatial vicinity of the user. Vignais et al. \cite{vignais2013innovative} proposed a system for the real-time assessment of manual assembly tasks by combining sensor network and AR technology to provide real-time ergonomic feedback during the actual work execution.
+
+Besides, many researchers are aimed to support complex assembly tasks with AR-integrated systems in order to minimize costs for specialized content generation \cite{servan2012using}. Petersen and Stricker \cite{petersen2012learning}, and Mura et al. \cite{mura2013ibes} reported proof-of-concept systems to create interactive AR manual automatically (for assembly, maintenance, etc.) by segmenting video sequences and live-streams of manual workflows into the comprising single tasks. Petersen et al. \cite{petersen2013real} extended these approaches to extract the required information from a moving camera which could be attached to user’s head, providing ‘‘ad hoc’’, in-situ documentation of workflows during the execution. Bhattacharva and Winer \cite{bhattacharya2015method} presented a method to generate AR work instructions in real time. Mohr et al. \cite{mohr2015retargeting} proposed an AR authoring system to transfer typical graphical elements in printed documentation (e.g., arrows indicating motions, structural diagrams for assembly relations, etc.) to AR guidance automatically.
+
+\textbf{Knowledge Representation based on Context-awareness}
+
+Knowledge representation is a critical issue in order to sift through the raw data available to user and make sense of it. Lee and Rhee \cite{lee2008context} built a pioneering context-aware AR system for car maintenance and assembly operations based on the ontology of workspace context. Zhu et al. \cite{zhu2013authorable} implemented context ontology in the proposed AR bi-directional authoring system because ontology was independent of programming languages and also enabled context reasoning using first-order logic.
+
+While knowledge is traditionally viewed as structured information, it can also be considered as information in context, i.e., both the content and the relevant context of the information should be considered \cite{chandrasegaran2013evolution}. By considering the context, AR is then used to provide in-situ information which is registered to the physical world (the context), and reduce the cognitive load of particular tasks. To provide the most relevant service/information to the users (e.g., directing user attention to specific workpiece features), application and service providers should be aware of their contexts and adapt to their changing contexts automatically, i.e., context-awareness, eliminating the need to search for the information. Context-awareness generally includes the status information of people, place, time and event, and the cognitive status of users, such as attention and comprehension. Most context-aware AR assembly are focused on the first, such as accuracy of tracking as well as the recognition of the working scene. Whereas, Hervas et al. \cite{hervas2013assistive} proposed a system to generate navigation based on the user’s cognitive context to supply spatial orientation and cognitive facilitation rather than basing on context information which belonged to the first item.
+
+\subsection{Implicit Conversational Cues in Guided Tasks}
+Voice-based conversational assistants are growing in popularity on ubiquitous electronic devices. However, with few exceptions, user input is limited to explicit queries or commands. Thus, Vtyurina et al. carried out the experiment \cite{vtyurina2018exploring} in exploring the role of implicit conversational cues in guided cooking task completion scenarios with virtual assistant. They have found that for the task of cooking a recipe, conversational cues constitute a large portion of interactions between a user and a conversational agent. They have also observed that, despite having different intents, many conversational cues and utterances transcribe into the same lexical representation. 
+
+\chapter{Design of User Studies}
+\section{Preliminary Study}
+\subsection{General Workflow of Live Authoring in the Cooking Scenario} 
+To observe and figure out useful gesture candidates during live-authoring in the real cooking scenario, the first step is to extract the general workflow of cooking and instructing so that we can design and set up the video shooting accordingly.
+
+Below is the general workflow patterns that we thought the cooking scenario would have, by analyzing many online recipe videos.
+
+\textbf{General Workflow:}
+\begin{enumerate}
+    \item Discuss about the dish, for instance, why selecting this dish, what is the great thing about the dish, the season or time when people usually eat the dish, occasion, quantity, and serving information, etc.
+    \item Show the ingredients. The way of introducing can be starting from one and moving to another one by one, and explaining with speech for each ingredient.
+    \item Show and tell each step of how to make the dish, like what to add, how to cook, how long to cook, and what or how to observe, etc. The Steps includes preparation, cooking, finishing, and maybe also includes showing the dish and telling additional tips.
+\end{enumerate}
+
+\subsection{Candidates of Capturing Patterns and Related Expected Actions}
+~\\
+\small
+\begin{table}
+\begin{tabularx}{\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\raggedright\arraybackslash}X 
+  | >{\raggedright\arraybackslash}X | }
+ \hline
+ \textbf{Capturing Pattern / Output / Snippet} & \textbf{Potential detailed cases} & \textbf{Expected actions (related parameters / conditions)}\\
+ \hline
+ Text only & \quad  & Closing eyes, looking up (with head moving up), rotating head, (eye gaze, head movement)\\
+ \hline
+ Image Only & \quad & Fix eye gaze on a target object for a specific time without speaking with concentration, point a target object without speaking, (eye gaze, finger, physical sensor)\\
+ \hline
+ Text + Image & Zoomed-in/out image, with focusing a point in a distance to the object of interest & Point a target object with speaking, fix eye gaze on a target object with speaking, (eye gaze, finger)\\
+ \hline
+ Text + Group Images & Various templates of group: 
+ 
+ (1) Animating image + single text (GIF format); 
+ 
+ (2) Multiple image + single text [display: row/column]; 
+ 
+ (3) Multiple images + multiple text [display: row/column]
+ & Fix eye gaze on a target object by rotating head and keep speaking, (eye gaze, head movement)\\
+ \hline
+\end{tabularx}
+\caption{\label{tab:table-name}Candidates of Capturing Patterns and Expected Actions}
+\end{table}
+
+\begin{table}
+\begin{tabularx}{\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\raggedright\arraybackslash}X 
+  | >{\raggedright\arraybackslash}X | }
+ \hline
+ \textbf{Capturing Pattern / Output / Snippet} & \textbf{Potential detailed cases} & \textbf{Expected actions (related parameters / conditions)}\\
+ \hline
+ Video & 
+ (1) With audio, or with subtitle
+ 
+ (2) Short videos, or a long video.
+ & Placing a target object closely to eyes and rotating the object with speaking, moving body around a target object with speaking, doing an action with speaking, (legs, finger, arms)\\
+ \hline
+\end{tabularx}
+\caption{\label{tab:table-name}Candidates of Capturing Patterns and Expected Actions (Cont.)}
+\end{table}
+\normalsize
+
+By discussing with my collaborators, we summarized the potential capturing patterns and actions as shown in the previous table. The left column and the center column in the table list up the main capturing patterns with potential detailed cases for each big category. The right column lists up the possible expected actions related to some capturing pattern category. These capturing patterns, expected actions, and their mappings, would be used in the design of video shooting, which will be further explained in Section 4.2. 
+
+\subsection{Conditions in terms of Occupation States}
+Previous section mentions the actions might be expected for participants to have for the capturing patterns. This section is to list up some conditions and contextual parameters in terms of physical (and possibly psychological) occupation states.
+
+Thereinto, we can classify the occupation states of hands as below:
+\small
+\begin{enumerate}
+    \item Not occupied: Two hands are free.
+    \item Partially occupied:
+    \begin{itemize}
+        \item One hand (dominant) is occupied, the other (non-dominant) is free.
+        \item One hand (non-dominant) is occupied, the other (dominant) is free.
+    \end{itemize}
+    \item Fully occupied: Two hands are occupied. 
+\end{enumerate}
+\normalsize
+
+Similarly, we can classify the actions of legs as well in terms of the occupation states. Apart from the physical occupation states, the psychological occupation states of humans can also be taken into consideration, yet the definition and classification of psychological occupation should be another extending issue which is not included in this report.
+
+\subsection{Parameters for Implicit Interactions}
+To obtain the potential capturing patterns, the system requires the conditions for implicit interactions, as well as the parameters for implicit interactions. The parameters may include body gestures, head movements, hands movement, and voice annotation, etc., as shown in the rightmost column in Table 4.1. Thereinto, we would like to observe how users utilize voice-annotation for shareable moments with a camera recording on smart-glass. For example, we can ask the participants to give voice-annotation to visuals in front while doing actions with two hands.
+
+\section{Design of the Video Shooting}
+\subsection{Objectives}
+As mentioned in the Introduction part, the objectives of the user studies is to identify if the participant follow the ``think-aloud” protocol, figure out what capturing patterns a capture might have, and based on the expecting patterns, explore which contextual parameters and conditions (e.g. eye gaze, hands and head movements, direction of a shoulder, etc.) might be able to be utilized to infer a capturer’s intention for those patterns.
+
+However, due to the limitation of the recording equipment and the restriction of the site, the video shooting mainly focuses on the observation of participant's hand gestures, head movements, and body movements. Note that the gaze movements are not included as the Pupil Core needs to connect with an laptop so that can collect the data of the user's gaze. Then it requires the participant to bring the laptop when pacing around in the kitchen. Also as many participants are not very familiar with our assigned recipe, they may refer to the recipe from time to time during the cooking, which has a great effect on gaze movement data if we collect.
+
+\subsection{Tasks and Procedures of Video Shooting}
+\quad\, \textbf{\textit{Tasks}}. Ask the participant to cook a selected dish following  ``think-aloud” protocol, that is, show and tell how to make this dish (to the remote audience). But before the real cooking that using the ingredients to cook, the participant will take two dry rehearsals to be familiar with the recipe and the ``think-aloud" protocol. The rehearsals are also included in the experiment. More details will be specified in Section 4.2.5.
+
+\textbf{\textit{Procedures of the Video Shooting}}. To begin with, the instructor should brief the introduction of the experiment and get the consent of the participant in advance -- the experiment will shoot the video and record the audio of the participant.
+
+Then the instructor should prepare(buy) the needed suppliers, ingredients, and cooking ware. For ingredients, the instructor store them in the fridge or the cupboard before the experiment -- as the shooting starts from taking out the food from the fridge or the cupboard. 
+
+After that, the participant listens to an instructor’s explanation for what an initial concept for live authoring is to them. (If possible, a visualized way can be used to help better understanding -- using voice with visuals during performing actions, then a user will get a multimedia document for the actioned moments.) 
+
+The participant has a few rehearsals with a given recipe before performing real cooking actions. The recipe is picked up by an instructor which allows the participant to take various actions as much as possible. Then the participant performs the actions with real ingredients according to the given recipe when the participant feels familiar with the recipe. During the rehearsals and the real-making shooting, the participant is engaged with the task and the instructor follows the instructions of video shooting as mentioned in Section 4.2.5. 
+
+After completing all cooking actions, the participant watches his/her recorded video with the instructor to elaborate on what patterns were expected during cooking. The participant picks up capturing moments first from the entire video. For the capturing moments, the participant picks up one of capturing patterns expected at that time among options we provide or they can describe it by him/herself if it doesn't exist in the options. Besides, the instructor will interview the participant about the user experience during the experiment.
+
+All interviews will be recorded in a video format. After having the interview, the instructor collects related video clips from recording equipment according to matched moments later. The collected videos are coded and analyzed properly.
+
+\subsection{Recording Equipment and the Placement}
+Having mapped the expecting patterns, and potential contextual parameters and conditions into Table 4.1, we introduce how to record and observe the mapping in this subsection.
+
+\textbf{\textit{Recording Equipment}}. Three mobile phones (iPhone 8s, Xiaomi, and Google Pixel), and 1 Pupil Core. The iPhone 8s is used to capture the front view. Xiaomi mobile phone is used to capture the back view. The Pupil Core (Figure 4.1) which serves as an eye tracking platform is used to record the real-time gaze during the cooking process. In addition, the Google Pixel mobile phone is connected to the Pupil Core using a cable during the whole cooking process, and the video data will transfer from Pupil Core the Google Pixel mobile phone instantly. 
+
+\begin{figure}[H]
+\caption{Pupil Core}
+\centering
+\includegraphics[scale=1.1]{images/PupilCore.jpeg}
+\end{figure}
+
+\begin{figure}[H]
+\caption{Pupil Core interface on Google Pixel}
+\centering
+\includegraphics[scale=0.18]{images/PupilPhone.jpeg}
+\end{figure}
+
+As you can see in the Figure 4.2, on Pupil Core interface of the connected Google Pixel mobile phone, we can see what Pupil Core captures. We can also capture the image back or forth a bit by adjusting the angle of the camera installed on Pupil Core. In this way, the issue mentioned earlier that the camera of the smart glasses cannot be adjusted can be solved now, as long as we asked the participants to wear the smart glasses and to pretend it is the smart glasses that is recording the process (though in fact it is the Pupil that records the process).
+
+\textbf{\textit{Additional Equipment}}. According to the first and the second video shootings, we observed that without wearing smart glasses, the participant's attention can be easily drawn to the front camera. Thus, we not only require the participant to wear Pupil Core but Vuzix Blade smart glasses as well, so as to provide a feeling of wearing smart glasses and the feeling that the recording is done by the smart glasses. Besides, I also use two phone holders to fix the phones to take the front view and the back view. 
+
+Meanwhile, to provide the user/participant with a feedback that the smart glasses  pretends to record, we use markers to mark the eyeglasses of Vuzix Blade (Figure 4.3). The red frame indicates the border of the recording, and if it is recording, we then draw a red dot at the center of this frame.
+
+\begin{figure}[H]
+\caption{Marking frame on Vuzix Blade smart glasses}
+\centering
+\includegraphics[scale=0.25]{images/marker.jpeg}
+\end{figure}
+
+\textbf{\textit{Experiment Site and Setup}}. The video shootings were carried out in a public kitchen at Prince George's Park Residence, National University of Singapore. We rotate the table 90 degree to present like Figure 4.4 so that if we stand aside the long side of the table and face the window, we can see the fridge, the oven, the micro oven, and the kettle on our left hand side; we can also see the cooker and washbasin on our right hand side. Now the direction we are facing are the front direction, and the opposite is the back direction. 
+
+\begin{figure}[H]
+\caption{Experiment site, PGPR kitchen}
+\centering
+\includegraphics[scale=0.085]{images/kitchen.jpeg}
+\end{figure}
+
+\begin{figure}[H]
+\caption{Setup for Video Shooting}
+\centering
+\includegraphics[scale=0.18]{images/setup.jpeg}
+\end{figure} 
+
+\textbf{\textit{Placement of the Equipment}}. Below is the sketch of the whole setup, as shown in Figure 4.5. The participant is at the center of the figure, facing the window and standing aside the table. Depending on the instructions of the video shooting in Section 4.2.5, the participant is either wearing the smart glasses and Pupil Core at the same time, or not wearing both the smart glasses and Pupil Core. If wearing Pupil Core, Google Pixel mobile phone needs to be connected with the Pupil Core using a cable. Note that we shall tell the participant to wear the clothes with a pocket so that his or her hands would not be occupied to carry the phone when walking from one place to another during the cooking and so affect the result of the experiment. On the table, there are the cooking ware, some ingredients (while we assume that some ingredients still in the fridge). We use a phone holder to fix iPhone 8s close to the window and use that iPhone 8s to shoot the front view. On the back of the participant, we pile up a stool and a shelf, and put Xiaomi mobile phone and the phone holder above the pile. The Xiaomi will shoot the back view.
+
+\textbf{\textit{Shooting Angle}}. We set the front and the back cameras, so as to get a 360 degree viewing. However, due to the limit size of the site, we cannot record the whole scene -- the front camera is not able to record the fridge and the cooker at both time. To deal with this problem, we choose the dishes which only needs mostly the left side with the table, or mostly the right side with the table. In this way, we can adjust our angle to capture the main front scene while the back camera can take a contrary/same angle, depending on the recipe chosen. If the recipe chosen only requires the left/right side with the table, we can make the back camera shift to the same side of the front one, so as to observe the gestures more clearer. Otherwise, we can make the back camera shift to the contrary side of the front one, so that the setup satisfies the 360 degree viewing but also we can still view the gestures clearer in one of the views (usually the front view) later.
+
+After video shooting and post-synchronization, the shootings from back, front and direct three angles will be presented like the way shown in Figure 4.6. In the figure, the left up is the front view, the left down is the back view, and the right is Pupil Core view. Here since we do not use the cooker in making that recipe ``Cranberry Biscuits‘’ so that we shift both front and back camera to the participant's left side.
+
+\begin{figure}[H]
+\caption{Three shooting angles in the post-synchronized video}
+\centering
+\includegraphics[scale=0.31]{images/VideoSync.png}
+\end{figure}
+
+\textbf{\textit{Additional Notes}}. Before carrying out the video shooting, ensure careful setup to get a nice video, such as light, resolution of the recording equipment, video angle, etc.
+
+\subsection{Recipes for Video Shooting}
+\quad\, \textbf{\textit{Selection Criteria}}. The selection of the recipes for user studies may involve these factors: the complexity of the cooking procedures, the complexity of the occupation states, the multiple switching modes from one action to another action, the diversity of chosen recipes.
+
+To begin with, the lasting time of the recipe or the complexity of the cooking procedures are not necessarily proportional to the complexity of the expected actions. Since the objective is not to observe the cooking actions such as chopping and stirring, we observe the actions and gestures that the participants naturally used between two steps or two procedures, intending to separate the steps or procedures and show to the audience.
+
+Despite that the complexity of the recipe (how hard making the dish is) may not be directly related, we still need to consider the complexity of the occupation states and different switching modes between actions in one recipe when selecting the recipes, which has been listed in Section 4.1. This is because the more occupation states and switching modes in one recipe, the more conditions and contextual parameters the recipe might have. For instance, it would be good to have the conditions (two hand occupied, two hands free, one hand occupied and one hand free) in one recipe. Also for one recipe, we can add some manual situations into it. For example, in the process of cooking a pasta, the participant is required to boil the water and use later. Then we can observe the participant's behavior when he or she hears the water is boiling. Similar situation also like the ingredients adding is not enough or excess, we then observe what would the participant reacts and deals with the unexpected situation.
+
+Moreover, we should also consider the diversity of the recipes chosen. For example, if one recipe mainly uses the cooker, maybe others can try the micro oven, oven, the electronic rice cooker, etc. Though the complexity of cooking actions do not lead to the complexity of the gesture inputs, we still would like to try many recipes with different cooking actions so that to observe more cases in some extent. Therefore, we chose one bakery recipe and one cooking recipe for this user study.
+
+\textbf{\textit{Selected Recipes}}. In the experiment, we have selected two dishes for the user studies. One is making cranberry biscuits. Another one is making a pasta with multiple vegetables and meats. Both of them includes different occupation states of two hands. Also they both have to take out the ingredients from the fridge, the cupboard, and walking between the preparation table and other places.
+
+Other considered recipe but not tested yet is making green dumplings. However, this recipe of green dumplings is much more complicated if starting from making the dumpling wrapper by the participant itself. As it can take the participant quite long time to finish, many participant would be reluctant to participate the experiment.
+
+\textbf{\textit{Additional Notes for Setup of Selected Recipes}}. The setup details have been mentioned in Section 4.2.3. Here is additional notes for two selected recipes. In the capturing of making cranberry biscuits, it has to show the preparation table, the fridge, the oven, and the cupboard. Therefore, I shifted a bit the angles of the front and back cameras so as to capture more clearer the gestures inputs near the table and the oven, as shown in Figure 4.5. In the capturing of making a pasta, it has to show the cooker, the fridge, the kettle, the preparation table, and possibly the washbasin and cupboard. However, as shown in Figure 4.5, they are not in the same side. So I decided to shift the front to the cooker side a bit while the back view takes the whole scene.
+
+\subsection{Instructions for Video Shooting for one Participant}
+
+Below are the paradigm of video shooting for one participant, if the participant has time and is willing to take part in the experiment. The instructor will take the video shooting three times, two rehearsals (dry shoot) followed by one real-making shoot. The details of the three shoots are,
+
+\begin{enumerate}
+    \item An instructor find a suitable recipe that contains cooking actions a participant needs to do to complete the recipe.
+    \item After giving some time to a participant for scanning through the recipe, the instructor asks the participant to show its understanding of the recipe to the instructor.
+    \begin{itemize}
+        \item \textbf{\textit{Camera recording}}: In this session, one camera installed in front is recording the demonstration. However, the participant \textit{does not} know the fact. The instructor should install the camera in front and rear in advance, and turn on the recording before the participant gets in the kitchen.
+        \item \textbf{\textit{Demonstration}}: In this session, the participant will explain its understanding of the given recipe in a rehearsal format using prepared suppliers. The instructor can give some reactions to present the demonstration is going well such as shaking a head, short respond (``I see", ``yes", etc.). It will take 5-10 minutes, if necessary, it can be extended.
+    \end{itemize}
+    \item The participant will take another rehearsal before shooting with real cooking.
+    \begin{itemize}
+        \item \textbf{\textit{Camera recording}}: The instructor will explain that the participant will take a final rehearsal alone and it will be recorded by a camera in front. The instructor then turns on recording and stands next to the camera when the participant doing the rehearsal.
+        \item \textbf{\textit{Demonstration}}: The participant naturally demonstrate how to cook according to given recipe, except not using the ingredients. It will take 5-10 minutes, if necessary, it can be extended.
+    \end{itemize}
+    \item As Moving forward, the participant will have real cooking actions according to the given recipe. In this session, the participant will wear a smart-glass and Pupil Core and the instructor will explain all things will be recorded by a camera on smart-glass. The instructor will explain that the front and rear cameras will be used to record the participant for observation.
+    \begin{itemize}
+        \item \textbf{\textit{Camera recording}}: The instructor will explain that the participant will have a real cooking using provided ingredients and it will be recorded by the Pupil Core. The instructor then turns on recording of the front and rear cameras and leave the participant alone demonstrating how to cook.
+        \item \textbf{\textit{Demonstration}}: The participant naturally demonstrate how to cook according to given recipe, using the real ingredients. Usually It will take 60-150 minutes.
+    \end{itemize}
+\end{enumerate}
+
+\section{Design of Interview after Video Shooting}
+\subsection{Objectives and Research Questions}
+After the video shooting, the instructor will carry out a interview related to the user experience of the shooting and the preferred output patterns for the live snippets. The objectives of the interview can be summarized as follows,
+\begin{enumerate}
+    \item If the participant of video shooting follows the ``think-aloud" protocol well and easily (without much effort).
+    \item Figure out the user preference in capturing patterns of live snippets in the cooking scenario.
+    \item If the designed video shooting really reflect the real cooking and instructing process. In other words, if there is any other factors in setup like hardware support that might affect the user behaviors.
+    \item Find out the difference in user experience between wearing smart glasses and not wearing smart glasses, if any.
+    \item Find the participant's preferred gesture inputs which participants want to show its intent using this gesture to do something such as trimming inputs to different capturing patterns.
+\end{enumerate}
+
+\subsection{Interview Questions}
+The interview questions to ask the participant are designed as follows,
+\begin{enumerate}
+    \item What is your expectation towards the patterns of the output? Give the interviewee the possible capturing patterns we have thought. Allow the interviewee to put forward its own ideas. The interviewer requires the interviewee to give a rough rank among these patterns.
+    \item Do you feel any difficulty following the "think-aloud" protocol (i.e., show and tell) during the two video shootings (since the participant is unknown of the first video shooting starting)?
+    \item Did you feel any difference when you wear the smart glasses and not wearing the glasses? Will smart glasses influence your natural behaviors and reactions? Or if there's any (other) factors that you think influenced your natural behaviors and reactions?
+\end{enumerate}
+
+\subsection{Interview Process}
+Below is the prototype of the interview process,
+\begin{enumerate}
+    \item Show the participant the raw videos just take which captures the whole cooking process, from the three angles taken by the front camera, the back camera, and the Pupil Core.
+    \item Briefly explain to the participant about the system structure as mentioned in Section 1.2:
+    \begin{center}
+        \textbf{Input $\quad\stackrel{Implicit\,interactions}{\longrightarrow}\quad$ Output}
+    \end{center}
+    Describe the potential capturing patterns mentioned in Section 4.1.2.
+    \item Ask the participant the prepared interview questions in Section 4.3.2 based on the objectives of the interview. 
+\end{enumerate}
+
+\section{Data Collection of the User Studies}
+The data collection includes the shoot videos, observation notes of instructors during video shooting, and interview notes.
+
+
+\chapter{Interim Results and Findings}
+\section{Overview of Data Collected}
+\quad\, \textbf{\textit{Video Shooting}}. In table 4.2, it listed up all shoot videos. Dry/Real means whether the shoot video is a a rehearsal (i.e., dry test) or real-making process using the ingredients. The column of smart glasses refers to whether the participant is wearing smart glasses and Pupil Core in the shooting. Attention refers to where the participant's attention is, front, adjacent, or remote/egocentric, that is, what kind of audience the participant is showing the cooking process at. The column of recording refers to if the participant is informed of the record or they do not know the fact of recording at the moment. 
+
+The column of the participant specifies the participant number and describe if the participant is biased. The first participant, me, is biased since I have a feeling towards the expected actions and capturing patterns. For the second participant who is NUS HCI lab member, know this project before shooting yet new to the live-authoring. We still consider she is unbiased. For other participants, they are totally new to live-authoring in cooking scenario, and so are unbiased. 
+
+Before the 5$^{th}$ shooting, we had been exploring the appropriate process of video shooting. Since in the first shooting, my attention can be easily drawn to the front camera, then I wore a smart glasses in the second shooting. Later we think that the real-making is still necessary while we also cannot omit the training session before the real-making. Taking the attention and different types of audience into consideration, we standardized the instructions of video shooting as described in Section 4.2.5. For 13$^th$ shooting, the participant did not have too much time to complete a real-making cooking process. In order to compare the experience with and without smart glasses, I kept the shooting but transformed into a dry test.
+
+\begin{center}
+\small
+\begin{table}
+\begin{tabular}{rcccccc}
+\toprule  
+No. & Shoot & Smart Glasses & Attention & Record & Participant(No./Biased) & Recipe \\
+\midrule 
+1 & dry & N & front & informed & 1 (me) / Y & bakery\\
+2 & dry & Y & egocentric & informed & 1 (me) / Y  & bakery\\
+3 & dry & Y & egocentric & informed & 2 / N & bakery\\
+4 & real & Y & egocentric & informed & 2 / N & bakery\\
+5 & dry & N & adjacent & uninformed & 3 / N & bakery\\
+6 & dry & N & front & informed & 3 / N & bakery\\
+7 & real & Y & remote & informed & 3 / N & bakery\\
+8 & dry & N & adjacent & uninformed & 4 / N & cooking\\
+9 & dry & N & front & informed & 4 / N & cooking\\
+10 & real & Y & remote & informed & 4 / N & cooking\\
+11 & dry & N & adjacent & uninformed & 5 / N & bakery\\
+12 & dry & N & front & informed & 5 / N & bakery\\
+13 & dry & Y & remote & informed & 5 / N & bakery\\
+14 & dry & N & adjacent & uninformed & 6 / N &  cooking\\
+15 & dry & N & front & informed & 6 / N & cooking\\
+16 & real & Y & remote & informed & 6 / N & cooking\\
+\bottomrule 
+\end{tabular}
+\caption{\label{tab:table-name}Summary of Taken Shootings}
+\end{table}
+\normalsize
+\end{center}
+
+\textbf{\textit{Interview and observation note}}. Altogether now the user studies has been carried out among 6 participants. Necessary observation notes has been taken down. 6 participants' interview answers have been collected as well, which will be further discussed in the next section.
+
+The collected data for this user studies is not enough to draw a sound conclusion. However, due to the one-month lock-down because of Covid-19, the experiment has to be suspended. After the suspension, I will keep finding participants and carry out the user studies. Hopefully, we can have altogether 12 or more participants to try different designed recipes, and see if they can share some common user behaviors.
+
+\section{Processing of the Data Collected}
+For shoot videos, I place the videos of one shooting from three angles (front, back, direct/Pupil Core) in the same frame, as shown in Figure 4.6. I use video editing applications to synchronize the three videos so that we can observe the gestures and at the same time have a feeling of the whole capturing from the 360 degree view (the front view plus the back view).
+
+Particularly, the videos taken by Pupil Core can be very shaky due to frequent and sometimes large head movement of the participants. In the post editing stage of the videos, apart from the synchronization, I also stabilized the Pupil Core view, reduced the environment noise, and cropped the frame if necessary.
+
+As for the interviews and observation notes, I summarized and found some common observations and responses. The interim results is documented in Section 5.1.
+
+\section{Interview Results}
+\subsection{Think-aloud Protocol}
+According to the feedback from the participants up to now, we can say that not everyone can follow the ``think-aloud" protocol. Many participants who are new to using smart glasses and performing live authoring are very likely to feel difficult. 
+
+The first participant who has some experience in using smart glasses and in live authoring using mobile phones did not find any difficulty in following the ``think-aloud" protocol. The second participant who has some experience in using smart glasses and the third, sixth participant without any prior experience also follows the protocol well. However, for the fourth participant without any prior experience and has low cooking capability found itself difficult to follow the protocol at around the first half of the time. Still according to instructor's observation, the fourth participant still show some difficulty in following the protocol in the next half of the time. The behaviors of not following for the fourth participant includes: forgetting to give instructions but only performing cooking actions, adding too much personal emotions during cooking (e.g. ``cooking this dish is too difficult", ``the dish in the finishing is so ugly", etc.), frequently seeking the instructor to query about the recipe rather than instructing to the target audience. The fifth participant without any prior experience follows the protocol well but was still used to speak to the camera rather than following the egocentric instruction mode. I infer that the differences between the third, sixth participant with the fifth participant may due to their ability in adaptation, the self-training or the familiarity of the recipe and the live-authoring workflow.
+
+\subsection{User Preference for Capturing Patterns}
+
+\textbf{Preference Rankings for output patterns}. The participants shared very similar rankings in terms of capturing patterns of live snippets in the cooking scenario. The ranks with rate from high to low shows as follows,
+
+\begin{enumerate}
+    \item $[$ Sequential GIFs with grouping + text $]$ $\geq$ $[$ Sequential photos with grouping + text $]$
+    \item $[$ Sequential GIFs + text $]$ $\geq$ $[$ Sequential photos + text $]$
+    \item $[$ Short video clips + text/subtitle
+    \item $[$ A long edited video (with some repeated and unwanted part trimmed) +  text/subtitle $]$ $\approx$ $[$ Sequential GIF/photos + a single text $]$
+    \item $[$ Text only $]$
+\end{enumerate}
+
+\textbf{Trimming of unwanted and repeated parts}. All participants show their inclination towards the trimming of unwanted and repeated parts in the shot videos. As a cooking with instructing process can be quite long while an online recipe only takes a few minutes to play, the output is supposed to have only the essence of the actions. Imagine if the stirring takes 10 minutes, the user may not want to watch the 10-min stirring procedure when he/she is doing post-editing (trimming and deleting) manually based on the draft recipe. What he/she expects is to have a very short video clip showing how to stir in this recipe. Therefore, we may need to increase the number of captured video clips (or animated graphics) with each one of shorter lasting time in one shot video.
+
+\textbf{Procedural and Sequential Presentation of Instruction Steps}. In terms of the cooking scenario, the participants also achieved a consensus that the most significant part in producing the recipe is to separate the whole video and audio input into steps -- one instruction after another. Thus, their highest vote is \textbf{sequential output of live snippets} with each of format static photo/animated graphics (e.g. GIF) $+$ text. In this way, the recipe can show instructions in sequence clearly, which enables the user to review the recipe easily and find a specific step or procedure quickly. Also because of this reason, video options are less preferable compared to GIFs/photos options.
+
+\textbf{Grouping vs. Not grouping}. Most of the participants argues allowing grouping of photos or animated graphics is better than not grouping at all, since it helps to structure the output live snippets into main categories and sub-categories. For instance, this simple hierarchy can be: (1) main categories contains preparation, stewing, cooking, finishing, and sub-categories contains those detailed steps in one main category; (2) main categories as separate procedures, and sub-structure contains an action with some related tips which need to be presented as photos and animated graphics, or zoomed-in/out capturing.
+
+However, the way of presenting group photos or animated graphics can affect the user experience. One participant reasons that grouping approach like Instagram does -- allowing to putt photos/GIFs in one post, and the user can slide to see the next, is not desirable as it breaks the sequential structure of the recipe. A recipe is usually simple and should be very simple as well. The grouping can make procedural output complicated, the user confused. Also the formatting like Instagram that hides the details of sub-structure in one grouping can make the user hard to find the exact step or information he/she is looking for. 
+
+Furthermore, with the same reason as sequential preference that the participants would like to retrieve the information of a step as easy as possible, they prefers multiple image + multiple text (i.e. each image corresponds to one paragraph of text) than multiple images + single text in one grouping in most cases. Special cases that does not require much alteration in text between photos/GIFs may need further consideration. For example, presenting main photos with additional zoomed-in/out photos.
+
+\textbf{Preference for static photo and animated graphics}. Most participants prefers animated graphics such as graphic interchange format (GIF) than static photos, as animated graphics like GIF can provide more details and instruct how to perform better. However, there is one participant argue that his preference of static photo and animated graphics is not fixed. It depends on the selection of the recipe but he thinks in most cases of daily cooking, the capturing pattern that static photos with text is enough. For instance, if the recipe contains easy-to-perform easy-to-understand actions like making cranberry biscuits, it should be more concise if using static photos. Additionally, we can present an action by the starting and ending capturing photos, if necessary. However, animated graphics can be useful when doing complicated tasks such as the dissection of the chicken. Also if not considering the assumption of the cooking scenario, we may need animated graphics in professional tasks such as procedures in a surgery.
+
+\textbf{Other Interpretation of Zoomed-in/out Patterns}. It is easy to think of the application of zoomed-in/out to a static picture of an object. However, one participant put forward another interpretation. Suppose the initial output is GIF/photos + text. Then if the user may find the GIF/photos not enough to present the instructions, he/she can click on the GIF/photo and it will jump to the corresponding video clip. Or alternatively it initially shows a short video clip. If the user finds it too long and has too many redundant parts, he/she can click and convert the video clip to a GIF/photo. This idea is very interesting yet it requires much more complexity of the system.
+
+\textbf{Simple Principle}. As the concern mentioned in last paragraph, another participant thinks the output multimedia file should be as simple as possible, as long as it fits the need of presenting the instructive cooking procedures clearly. The simple principle of designing the capturing pattern affects the complexity, can increase the processing speed as decreasing the complexity of the system, and can also facilitate the user's cognition during the review.
+
+\subsection{User Experience in Wearing vs. Not wearing smart glasses}
+We used Vuzix Blade smart glasses in the user studies. Almost all participants consider it very heavy and uncomfortable in wearing, specially for long-time wearing in the real-making video shooting. Except one participant rapidly adapted to the sight of the smart glasses, others found that with wearing Vuzix Blade smart glasses their sight became darker, not that clear and also narrower.
+
+Also one participant mentioned she feels that she became more cautious wearing the glasses and the view through the glass became more concentrated. But later when she get used to the glasses, her behaviors get much more easier, which is more closed to her natural behaviors in cooking scenario.
+
+\section{Video Analysis}
+\subsection{Process of Systematic Video Analysis}
+\subsection{User Behaviors in Wearing vs. Not wearing smart glasses}
+\subsection{User Behaviors in Instructing and Teaching}
+
+\chapter{Reflection and Future Work}
+\section{Reflection and Limitation}
+\quad\, \textit{\textbf{Sample Size}}. Up to now, there are altogether 6 participants and 16 shooting (including the dry and real-making ones). However, it is far from enough to draw a sound conclusion as the sample case is too small. Thus, the interim results mentioned in last chapter might not really be the ``common" traits when the number of participant sample goes large, although we can get a feeling and be inspired by interim results so as to optimize the process of the user studies. I plan to carry out this user studies among at least 12 participants, and do video analysis in a more systematic way (in which the approaches considered in the development of EagleView \cite{brudy2018eagleview} a video analysis tool for visualising and querying spatial interactions of people and devices can be referenced).
+
+\textit{\textbf{Participant Conditions}}. Among the 6 participants who took part in the user study, some of their conditions may affect the result of the user studies. The first participant (me) is familiar with the concept of live-authoring and had experience of using smart glasses as well as live authoring on mobile phone. Also, the first participant has already had a expectation towards capturing patterns and actions, which may affect the natural behaviors in the user studies. The third participant, who are not proficient in English (can read but not very well in speaking), used Chinese in the user study so as to perform naturally. However, we actually do not know if the change of the language will bring any affect on the result. The fourth participant who is not skilled at cooking, easily brought the status of feeling difficult into the experiment, sometimes violating the requirement of the instructors that instructing by voice and vision to the remote audience. Thus, in the rest of the experiments to be carried out, I will try to find participants who is proficient in English, in cooking and new to live authoring process.
+
+\textit{\textbf{Expected Actions}}. Due to the limitation of recording equipment and the site, observations of gaze movements are not included. We only focus on the observation of hand gestures, head movements and body movements (walking from one place to another place in the kitchen, shifting the direction of the shoulder).
+
+\textit{\textbf{Seamlessness}}. Owing to the hardware limitation, Pupil Core instead of smart glasses is used to record what the participant see during the cooking and instructing. However, the design of Pupil Core without a view like smart glasses requires the user look at the connected phone so that he can know what is capturing and adjusts the angles sometimes to ensure it captures the image he/she wants. But this could affect the seamlessness of live authoring, which is not expected.
+
+\textit{\textbf{Seamlessness}}. According to recent 6 participants, training time varies from person to person. The fifth participant said it was hard to adapt to the view of smart glasses and not facing to the front when instructing. Thus, in later experiments, we may increase or decrease training session (like altering the rehearsal times) to ensure the participant is well-prepared and in good state to be engaged in the tasks.
+
+\section{User Studies}
+In the future user studies, we may include the gaze movements and possibly other implicit inputs as well, if equipment and experiment site support. Also we will carry out the experiment without implicit HCI in the same setting so as to compare with the live authoring with implicit HCI.
+
+\section{Implementation}
+If we can figure out the mapping from the modalities and features of implicit inputs (like gaze movements, gestures) to users' intent as the way Wang and Ji \cite{wang2015video} did in video affective content analysis -- matching features with emotion descriptors, then we can implement corresponding recognition of implicit interactions into the system, carrying out user experiment and collecting the feedback.
+
+\section{Verification}
+It is very likely that users do not accept the ``fully automatic" mode as this mode can lead to many false interpretation (aka awareness mismatch). We need to leverage the level of automation and lower the rate of false interpretation of the user intention.
 
 \bibliographystyle{socreport}
 \bibliography{socreport}
 
-\appendix
-\chapter{Code}
-
-\chapter{Proofs}
-In this appendix, we present alternate, longer, but more interesting proof 
-of correctness of our algorithm.  This proof is based on induction and proof
-by contradiction.
 \end{document}
